@@ -1,0 +1,11 @@
+# Cached files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.env
+
+# System-specific files
+.DS_Store
