@@ -21,11 +21,8 @@ def menu():
     choice = questionary.select(
         "Choose an option:",
         choices=[
-            "IPv6",
             "ICMP Sweep",
             "TCP Scan",
-            "UDP Scan",
-            "Settings",
             "Exit",
         ],
     ).ask()
@@ -40,9 +37,6 @@ def menu():
     elif choice == "ICMP Sweep":
         ip_range = questionary.text("Enter network range (e.g., 192.168.1.0/24):").ask()
         icmp_sweep(ip_range)
-    elif choice == "Settings":
-        console.print("[blue]Opening settings...[/blue]")
-        # Add settings logic
     else:
         console.print("[red]Exiting...[/red]")
         exit()
