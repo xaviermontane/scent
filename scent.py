@@ -2,6 +2,7 @@ from rich.console import Console
 import questionary
 import pyfiglet
 from scans.icmp_sweep import icmp_sweep
+from scans.tcp_scan import tcp_scan
 
 # Initialize the console for rich output
 console = Console()
@@ -22,16 +23,20 @@ def menu():
         choices=[
             "IPv6",
             "ICMP Sweep",
-            "SYN Scan",
+            "TCP Scan",
             "UDP Scan",
             "Settings",
             "Exit",
         ],
     ).ask()
 
-    if choice == "SYN Scan":
+    if choice == "TCP Scan":
+        target_ip = questionary.text("Enter the target IP address:").ask()
+        port_range = questionary.text("Enter port range (default: 1-1024):").ask()
+        if port_range == "":
+            port_range = "1-1024"
         console.print("[green]Scanning network...[/green]")
-        # Call network scan function
+        tcp_scan(target_ip, port_range)
     elif choice == "ICMP Sweep":
         ip_range = questionary.text("Enter network range (e.g., 192.168.1.0/24):").ask()
         icmp_sweep(ip_range)
