@@ -1,3 +1,3 @@
-import icmp_sweep
+from . import icmp_sweep
 
 __all__ = ['icmp_sweep']
