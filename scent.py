@@ -29,16 +29,16 @@ def menu():
         ],
     ).ask()
 
-    if choice == "TCP Scan":
+    if choice == "ICMP Sweep":
+        ip_range = questionary.text("Enter network range (e.g., 192.168.1.0/24):").ask()
+        icmp_sweep(ip_range)
+    elif choice == "TCP Scan":
         target_ip = questionary.text("Enter the target IP address:").ask()
         port_range = questionary.text("Enter port range (default: 1-1024):").ask()
         if port_range == "":
             port_range = "1-1024"
         console.print("[green]Scanning network...[/green]")
         tcp_scan(target_ip, port_range)
-    elif choice == "ICMP Sweep":
-        ip_range = questionary.text("Enter network range (e.g., 192.168.1.0/24):").ask()
-        icmp_sweep(ip_range)
     elif choice == "UDP Scan":
         target_ip = questionary.text("Enter the target IP address:").ask()
         port_range = questionary.text("Enter port range (default: 1-1024):").ask()
