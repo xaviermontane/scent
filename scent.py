@@ -4,6 +4,7 @@ import pyfiglet
 from scans.icmp_sweep import icmp_sweep
 from scans.tcp_scan import tcp_scan
 from scans.udp_scan import udp_scan
+from config.settings import SETTINGS
 
 # Initialize the console for rich output
 console = Console()
@@ -46,6 +47,8 @@ def menu():
             port_range = "1-1024"
         console.print("[green]Scanning network...[/green]")
         udp_scan(target_ip, port_range)
+    elif choice == "Settings":
+        print(SETTINGS)
     else:
         console.print("[red]Exiting...[/red]")
         exit()
